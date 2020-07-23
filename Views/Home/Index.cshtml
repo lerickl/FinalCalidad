@@ -1,0 +1,44 @@
+﻿@model FinalCalidad.Models.Cuenta
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 id="ViewIndex">Index</h2>
+
+
+<div class="row">
+    <a id="btnAddCuenta" href="/home/AddCuenta">Crear una Cuenta</a>
+
+</div>
+
+<div class="row">
+
+    <a id="btnAddIngreso" href="/home/AddIngreso">Registrar Ingreso</a>
+
+</div>
+<div class="row">
+
+    <a id="btnAddGasto" href="/home/AddGasto">Registrar Gasto</a>
+</div>
+
+<div class="form-group">
+    <div class="md-form">
+
+        <h6 for="contact-name" class="font-weight-bold">Seleccione cuenta para ver su saldo</h6>
+
+        <form  action="/home/VerSaldo" method="get" enctype="text/plain">
+            <select class="combobox form-control" name="Cuenta">
+                <option value="0" selected="selected">Seleccione Cuenta</option>
+                @foreach (var cuenta in ViewBag.Cuentas)
+                {
+                    <option value="@cuenta.CuentaId" name="@cuenta.Nombre">@cuenta.Nombre</option>
+                }
+            </select>
+            <button id="CalcularSaldo" type="submit">Ver Saldo </button>
+        </form>
+       
+
+
+    </div>
+</div>

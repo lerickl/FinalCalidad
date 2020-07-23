@@ -1,0 +1,71 @@
+﻿@model FinalCalidad.Models.Cuenta
+
+@{
+    ViewBag.Title = "AddCuenta";
+}
+
+<h2 id="ViewAddCuenta">AddCuenta</h2>
+
+
+@using (Html.BeginForm()) 
+{
+ 
+    
+    <div class="form-horizontal">
+        <h4 id="AddCuenta">Cuenta</h4>
+        <hr />
+        <form action="/home/AddCuenta" method="post" enctype="text/plain">
+        
+            <div class="form-group">
+     
+                <div class="col-md-10">
+                    <label>Nombre</label>
+                    <input value="@ViewBag.Cuenta.Nombre" name="Nombre" id="Nombre"  />
+                    @Html.ValidationMessage("Nombre")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="md-form">
+                    @Html.ValidationMessage("Categoria")
+                    <h6 for="contact-name" class="font-weight-bold">Categoria</h6>
+      
+
+                    <select class="combobox form-control" name="Categoria">
+                        <option value="0"  selected="selected">Seleccione Categoria</option>
+                        <option value="propio" name="propio"> propio</option>
+                        <option value="credito" name="credito"> credito</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+              
+                <div class="col-md-10">
+                    <label>saldo inicial</label>
+                    @Html.ValidationMessage("SaldoInicial")
+                    <input value="@ViewBag.Cuenta.SaldoInicial" name="SaldoInicial" id="SaldoInicial"  />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnAddCuenta" type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+
+
+
+ 
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
